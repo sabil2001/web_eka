@@ -16,9 +16,9 @@ class Customer extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function pesanan()
+    public function keranjang()
     {
-        return $this->hasMany(Pesanan::class);
+        return $this->hasMany(keranjang::class);
     }
 
 

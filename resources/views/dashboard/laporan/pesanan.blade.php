@@ -30,12 +30,8 @@
         <div class="card">
            <div class="card-body">
               <h5 class="card-title">Data</h5>
+              <p>Range data</p>
               <div class="row">
-                <div class="col">
-                    Range data
-                </div>
-              </div>
-              <div class="row mt-2">
                 <div class="col-2">
                     <input type="date" name="tglawal" id="tglawal" class="form-control">
                 </div>
@@ -47,6 +43,7 @@
                 '/' + document.getElementById('tglakhir').value " target="_blank" class="btn btn-primary col-md-12">Cetak</a>
                 </div>
               </div>
+              <p><small class="text-danger">*wajib input tanggal sebelum cetak laporan</small></p>
                 <div class="table-responsive">
                     <table class="table table-striped table-sm mt-2">
                     <thead>

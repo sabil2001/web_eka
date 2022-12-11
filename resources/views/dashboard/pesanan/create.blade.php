@@ -24,19 +24,8 @@
                       <div class="mb-3">
                           <div class="row">
                               <div class="col-6">
-                                <label for="customer_id" class="form-label">Nomor Induk Penduduk</label>    
-                                <br>                           
-                                <select class="select2" id="customer_id" name="customer_id" required>
-                                  <option value="">--pilih--</option>
-                                    @foreach ($customers as $customer)                                       
-                                    <option value="{{ $customer->id }}">{{ $customer->NIK }} | {{ $customer->nama }}</option>
-                                    @endforeach
-                                </select>
-                                  @error('customer_id')
-                                      <div class="invalid-feedback">
-                                      {{ $message }}
-                                      </div>
-                                  @enderror 
+                                <label for="search_customer" class="form-label">Nomor Induk Penduduk</label>    
+                                <input type="text" id="search_customer" name="search_customer" placeholder="Search" class="form-control" />
                               </div> 
                           </div>     
                       </div>
@@ -123,65 +112,22 @@
                           </div>
                         </div>     
                     </div>
-                      <div class="text-center"> <button type="submit" class="btn btn-primary">Submit</button> <button type="reset" class="btn btn-secondary">Reset</button></div>
+                    <div class="row">
+                      <div class="col">
+                        <input type="button" id="button" value="Toggler" />
+                        {{-- <input type="button" id="togglee" value="Togglee" /> --}}
+                      </div>
+                    </div>
+
+                      <div class="text-center"> 
+                        <button onclick="history.back()" class="btn btn-primary">Back</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                        <button type="submit" class="btn btn-primary">Submit</button> 
+                      </div>
                   </form>
               </div>
           </div>
        </div>
     </div>
   </section>
-
-
-
-  {{-- <div class="table-responsive"> --}}
-
-
-    
-      {{-- <div class="col-md-8">
-        <div class="search">
-          <form action="" method="POST">
-            @csrf
-            <label for="search">Cari Customer</label>
-            <input type="search" id="search" name="search" class="form-control" placeholder="NIK">
-            <button type="submit" class="badge">Cari</button>
-          </form>
-
-        </div>
-      </div>
-
-    <table class="table table-striped table-sm">
-      <thead>
-        <tr>
-          <th scope="col">No</th>
-          <th scope="col">Nama</th>
-          <th scope="col">NIK</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($customers as $customer)  
-        <tr>
-          <td>{{ $loop->iteration }}</td>
-          
-          <td>{{ $customer->nama }}</td>
-          <td>{{ $customer->NIK }}</td>
-
-          
-            
-          
-          <td>
-            <a href="/dashboard/customer/{{ $customer->id }}" class="badge bg-info"><span data-feather="eye"></span></a>
-            <a href="/dashboard/customer/{{ $customer->id }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
-          </td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
-    {{-- <div>
-      {{ $customers->firstItem() }}
-    </div> --}}
-    {{-- <div class="position-absolute end-0 me-4">
-      {{ $customers->links() }} --}}
-    {{-- </div>
-    </div> --}} 
 @endsection

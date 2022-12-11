@@ -9,17 +9,26 @@ class Pesanan extends Model
 {
     use HasFactory;
 
-    use HasFactory;
     protected $guarded = ['id'];
     protected $table = 'pesanans';
 
-    public function customer()
+    public function keranjang()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Keranjang::class);
     }
 
-    public function produksi()
+    public function produk()
     {
-        return $this->hasMany(Produksi::class);
+        return $this->belongsTo(Produk::class);
     }
+
+    public function kain()
+    {
+        return $this->belongsTo(Kain::class);
+    }
+
+    // public function produksi()
+    // {
+    //     return $this->hasMany(Produksi::class);
+    // }
 }

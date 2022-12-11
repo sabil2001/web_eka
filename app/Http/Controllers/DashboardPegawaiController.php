@@ -58,14 +58,13 @@ class DashboardPegawaiController extends Controller
             'foto' => 'image|file|max:4096',
             'no_telp' => 'required|numeric|min:9',
             'jenis_kelamin' => 'required',
-            'jabatan' => 'required',
-            'status' => 'required',
+            'jabatan' => 'required'
         ]);
 
         if($pegawai->file('foto')){
             $validatedData['foto'] = $pegawai->file('foto')->store('pegawai-foto');
         }
-
+        $validatedData['status'] = 'Aktif';
         $validatedData['password'] = Hash::make($validatedData['password']);
         User::create($validatedData);
 

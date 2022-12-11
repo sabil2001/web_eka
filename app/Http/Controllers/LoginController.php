@@ -22,11 +22,13 @@ class LoginController extends Controller
             'password' => 'required',
             ]);
 
-        
-        
         if(Auth::attempt($credentials)){
-            $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            if (Auth::user()->status == 'Aktif') {
+                $request->session()->regenerate();
+                return redirect()->intended('/dashboard');
+            }
+            return back()->with('loginError', 'User Tidak Aktif!');
+            
         }
 
         return back()->with('loginError', 'Login failed!');

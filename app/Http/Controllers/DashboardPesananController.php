@@ -69,6 +69,7 @@ class DashboardPesananController extends Controller
         
 
         Pesanan::create($validasi);
+        
         return redirect('/dashboard/pesanan')->with('success', 'Berhasil menambahkan pesanan!');
     }
 

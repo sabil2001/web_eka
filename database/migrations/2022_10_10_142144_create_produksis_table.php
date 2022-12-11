@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('produksis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('pesanan_id');
+            $table->foreignId('keranjang_id');
             $table->timestamp('tgl_mulai');
             $table->date('tgl_akhir')->nullable();
-            $table->string('total_barang_jadi')->nullable();
+            $table->string('status');
             $table->string('keterangan')->nullable();
             $table->timestamps();
         });

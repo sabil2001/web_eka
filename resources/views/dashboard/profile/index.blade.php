@@ -66,6 +66,11 @@
                        <div class="col-lg-3 col-md-4 label">Jabatan</div>
                        <div class="col-lg-9 col-md-8">{{ auth()->user()->jabatan}}</div>
                     </div>
+                    <div class="row">
+                        <div class="col-12 mb-2 text-center">
+                            <button onclick="history.back()" class="btn btn-secondary mt-2 col-3">Back</button>
+                        </div>
+                       </div>
                  </div>
                  <div class="tab-pane fade profile-edit" id="profile-edit">
                     <h5 class="card-title">Biodata</h5>
@@ -134,6 +139,7 @@
                               </div>
                             <div class="col mt-2">
                                 <div class="text-center">
+                                    <button onclick="history.back()" class="btn btn-secondary">Back</button>
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </div>
@@ -162,6 +168,7 @@
                             
                             <div class="col mt-2">
                                 <div class="text-center">
+                                    <button onclick="history.back()" class="btn btn-secondary">Back</button>
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </div>
@@ -171,6 +178,8 @@
                  
               </div>
            </div>
+           
+           
         </div>
      </div>
     </div>

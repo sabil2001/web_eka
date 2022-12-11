@@ -66,25 +66,10 @@
                                 </div>
                             </div>     
                         </div>
-                        {{-- <div class="mb-3">
-                            <div class="row">
-                                <div class="col-3">
-                                    <label for="status" class="form-label">Status</label>
-                                    <select class="form-select" aria-label="Default select example" id="status" name="status" placeholder="status" required value="{{ old('status') }}">
-                                        <option value="">> Pilih <</option>
-                                        <option value="Aktif">Aktif</option>
-                                        <option value="Tidak Aktif">Tidak Aktif</option>
-                                    </select>
-                                    @error('status')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                
-                            </div>     
-                        </div> --}}
-                        <div class="text-center"> <button type="submit" class="btn btn-primary">Submit</button> <button type="reset" class="btn btn-secondary">Reset</button></div>
+                        <div class="float-end">
+                            <button type="reset" class="btn btn-secondary"><i class="bi bi-x-circle"></i><span class="ms-2">Reset</span></button>
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i><span class="ms-2">Simpan</span></button>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\Pesanan;
+use App\Models\Keranjang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use PDF;
 
 class LaporanController extends Controller
 {
@@ -23,14 +24,22 @@ class LaporanController extends Controller
 
     public function cetakPesanan($tglawal, $tglakhir)
     {
-        if(auth()->guest() || auth()->user()->jabatan !== 'Master Admin' || auth()->user()->jabatan !== 'Pimpinan'){
-            abort(403);
-        }
+        // if(auth()->guest() || auth()->user()->jabatan !== 'Master Admin' || auth()->user()->jabatan !== 'Pimpinan'){
+        //     abort(403);
+        // }
         $tittle        = 'Dashboard';
         $cetakpertanggal = Pesanan::with('customer')->whereBetween('pesanan_at',[$tglawal, $tglakhir])->get();
 
         $pdf = PDF::loadView('dashboard.laporan.pesanan-pertanggal',compact('cetakpertanggal','tittle'));
         return $pdf->download('laporan.pdf');
         
+    }
+
+
+    public function invoice(Keranjang $keranjang)
+    {
+        $pesanan = Pesanan::where('keranjang_id', $keranjang->id)->get();
+        $pdf = PDF::loadView('dashboard.order.invoice_pdf', ['keranjang'=>$keranjang, 'pesanan'=>$pesanan])->setPaper('A4', 'potrait');
+        return $pdf->stream('Invoce.pdf');
     }
 }

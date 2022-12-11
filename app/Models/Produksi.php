@@ -11,13 +11,17 @@ class Produksi extends Model
     protected $table = 'produksis';
     protected $guarded = ['id'];
 
-    public function pesanan()
-    {
-        return $this->belongsTo(Pesanan::class);
-    }
+    // public function pesanan()
+    // {
+    //     return $this->belongsTo(Pesanan::class);
+    // }
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function keranjang()
+    {
+        return $this->belongsTo(Keranjang::class);
     }
     public function verifikasi()
     {

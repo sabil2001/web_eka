@@ -49,6 +49,7 @@
                 </div>
             </div>
          </div>
+         <button onclick="history.back()" class="btn btn-secondary mt-2">Back</button>
      </div>
     </div>
   </section>

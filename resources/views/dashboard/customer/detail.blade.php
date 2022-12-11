@@ -68,7 +68,7 @@
                             
                             <td>{{ $pesanan->tgl_pesanan }}</td>
                             <td>{{ $pesanan->model_produk }}</td>
-                            <td>{{ $pesanan->jenis_kain }}</td>
+                            <td>{{ $pesanan->jebnis_kain }}</td>
                             <td>{{ $pesanan->total_barang }}</td>
                               @if ($pesanan->status == 'Belum Diproses')
                                  <td><span class="badge bg-danger">{{ $pesanan->status }}</span></td>
@@ -93,8 +93,15 @@
                  
               </div>
            </div>
+           <div class="row">
+            <div class="col-12 ms-3">
+               <button onclick="history.back()" class="btn btn-secondary btn-sm btn-block mb-4 btn-back">Back</button>
+            </div>
+           </div>
         </div>
+        
      </div>
+     
     </div>
   </section>
 @endsection

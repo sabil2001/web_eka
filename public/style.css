@@ -1,0 +1,219 @@
+.btn-back{
+    width: 100px;
+    transition: transform .2s;
+}
+.btn-back:hover{
+    width: 100px;
+    transition: 0.7s;
+    transform: scale(1.1);
+}
+.produk-preview-image{
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    background-image: url("/img/preview.jpg");
+    
+}
+
+.detail:hover{
+    color: #0000FF;
+}
+
+.foto-produk{
+    width: 100px;
+    height: 100px;
+}
+
+.bg-produksi{
+    background-image: url("/img/bg_button_produksi.jpg");
+    background-size: 700px;
+}
+
+.img-produk-detail {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.img-produk-detail-show {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.notifikasi {
+    box-shadow: 2px 1px rgb(189, 189, 189);
+    position: relative;
+    left: 2px;
+    bottom: 10px;
+    background-color: #ee403a;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+}
+.text-notif{
+    position: relative;
+    top: 1px;
+    text-align: center;
+    font-size: 10px;
+    color: white;
+}
+
+.cek-kain{
+    position: relative;
+    top: 28px;
+}
+
+.button-show-edit {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    /* transition: .4s; */
+    background-color: #2980B9;
+    color: white;
+    font-weight: bold;
+}
+.button-show-edit:hover {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    transition: .4s;
+    background-color: #2471A3;
+    color: white;
+    font-weight: bold;
+}
+
+.button-show-batal {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    /* transition: .4s; */
+    background-color: #E74C3C;
+    color: white;
+    font-weight: bold;
+}
+.button-show-batal:hover {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    transition: .4s;
+    background-color: #CB4335;
+    color: white;
+    font-weight: bold;
+}
+
+.button-produksi {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    transition: .4s;
+    background-color: #2ECC71;
+    color: white;
+    /* font-weight: bold; */
+}
+.button-produksi:hover {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    transition: 0.7s;
+    background-color: #28B463;
+}
+
+.text-judul {
+    color: #01003d;
+}
+.tittle-detail-order{
+    font-weight: bold;
+    background-color: #48C9B0;
+    width: 200px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.text-deadline {
+    width: 190px;
+    text-align: center;
+}
+.tombol-halaman-detail {
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #E74C3C;
+    color: white;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 5px;
+}
+.tombol-halaman-detail:hover {
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #CB4335;
+    color: white;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.tombol-halaman-produksi {
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #2980B9;
+    color: white;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 5px;
+}
+.tombol-halaman-produksi:hover {
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #2471A3;
+    color: white;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.tombol-aksi{
+    background-color: #2980B9;
+    padding: 6px;
+    border-radius: 5px;
+    font: bold 11px Arial;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.tombol-aksi:hover{
+    background-color: #2471A3;
+    padding: 6px;
+    border-radius: 5px;
+    font: bold 11px Arial;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.4s;
+}
+
+.tombol-invoice{
+    background-color: #C0392B;
+    padding: 6px;
+    border-radius: 5px;
+    font: bold 11px Arial;
+    text-decoration: none;
+    color: #F7F9F9;
+    font-weight: bold;
+}
+.tombol-invoice:hover{
+    background-color: #A93226;
+    padding: 6px;
+    border-radius: 5px;
+    font: bold 11px Arial;
+    text-decoration: none;
+    color: #F7F9F9;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.4s;
+}
+

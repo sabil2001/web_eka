@@ -96,7 +96,7 @@
                 </div>
                 @endif
                 @endforeach
-                
+                <button onclick="history.back()" class="btn btn-secondary mt-2">Back</button>
 
                 
                 

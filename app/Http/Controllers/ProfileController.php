@@ -29,8 +29,9 @@ class ProfileController extends Controller
             'jenis_kelamin' => 'required',
         ];
         $validatedData = $request->validate($rules);
-            if($request->file('foto')){
-                $validatedData['foto'] = $request->file('foto')->store('pegawai-foto');
+        
+        if($request->file('foto')){
+            $validatedData['foto'] = $request->file('foto')->store('pegawai-foto');
         }
         User::where('id', $user)
                 ->update($validatedData);

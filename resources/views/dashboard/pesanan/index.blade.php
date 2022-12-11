@@ -25,25 +25,26 @@
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
               @endif
-
-          <div class="table-responsive">
-            @can('admin')  
-            <a href="/dashboard/pesanan/create" class="btn btn-primary mb-2 mt-2" >Tambah Pesanan</a>
-            @endcan
-
-            <form action="/filterDate" method="GET">
-            <div class="row">
-              <div class="col-5">
+          
+          <div class="row">
+            <div class="col">
+              @can('admin')  
+              <a href="/dashboard/pesanan/create" class="btn btn-primary mb-2 mt-2" >Tambah Pesanan</a>
+              @endcan
+              <form action="/filterDate" method="GET">
+                
                 <div class="input-group">
                   <input type="date" class="form-control" name="start_date">
                   <input type="date" class="form-control ms-2" name="end_date">
                   <button class="btn btn-primary ms-2" type="submit">Filter</button>
                 </div>
-              </div>
-
-            </div>
             </form>
-
+            </div>
+            <div class="col">
+              
+            </div>
+          </div>
+          <div class="table-responsive">
               <table class="table table-striped table-sm mt-2">
                 <thead>
                   <tr>

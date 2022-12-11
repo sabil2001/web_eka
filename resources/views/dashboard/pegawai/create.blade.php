@@ -1,6 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
+
 <div class="pagetitle">
   <h1>Data Pegawai</h1>
   <nav>
@@ -117,19 +118,6 @@
                             <option value="Master Admin">Master Admin</option>
                         </select>
                         @error('jabatan')
-                        <div class="invalid-feedback">
-                          {{ $message }}
-                        </div>
-                        @enderror 
-                    </div>
-                    <div class="col">
-                        <label for="status" class="form-label">Status</label>
-                        <select class="form-select" aria-label="Default select example" id="status" name="status">
-                            <option value="">--pilih--</option>
-                            <option value="Aktif">Aktif</option>
-                            <option value="Non Aktif">Non Aktif</option>
-                        </select>
-                        @error('status')
                         <div class="invalid-feedback">
                           {{ $message }}
                         </div>
