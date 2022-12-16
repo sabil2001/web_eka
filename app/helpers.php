@@ -66,3 +66,8 @@ function branchA()
 {
     return "INI PERUBAHAN A";
 }
+
+function branchB()
+{
+    return "INI BRANCH B";
+}
