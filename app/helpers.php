@@ -61,3 +61,8 @@ function testing()
 {
     echo "TESTING";
 }
+
+function branchA()
+{
+    return "INI PERUBAHAN A";
+}
