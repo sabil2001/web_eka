@@ -56,3 +56,8 @@ function make_datatable($query, $columns, $column_search = [], $return_query = f
     }
     return $result;
 }
+
+function testing()
+{
+    echo "TESTING";
+}
