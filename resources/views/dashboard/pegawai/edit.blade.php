@@ -108,7 +108,7 @@
                             <option value="Admin">Admin</option>
                             <option value="Produksi">Produksi</option>
                             <option value="Pimpinan">Pimpinan</option>
-                            <option value="Master Admin">Master Admin</option>
+                            {{-- <option value="Master Admin">Master Admin</option> --}}
                         </select>
                         @error('jabatan')
                         <div class="invalid-feedback">

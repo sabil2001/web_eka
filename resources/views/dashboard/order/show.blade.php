@@ -209,7 +209,7 @@
                                 <td>{{ $pesanan->status }}</td>
                                 <td>
                                     @if ($pesanan->total_kain_digunakan)
-                                    {{ $pesanan->total_kain_digunakan }} CM
+                                    {{ $pesanan->total_kain_digunakan }} M
                                     @else
                                         
                                     @endif
@@ -225,7 +225,10 @@
                                 <td>
                                     <div><a href="#" data-id="{{ $pesanan->id }}" title="Rincian ukuran" class="tombol-lihat tombol-halaman-detail"><i class="bi bi-eye"></i> Lihat Rincian Ukuran</a></div>
                                     @if ($keranjang->status == 'Belum diproduksi')
+
                                         <div class="mt-2"><a href="/dashboard/order/edit/pesanan/{{ $pesanan->id }}" class="tombol-halaman-produksi " title="Edit Informasi Pesanan"><i class="bi bi-pencil-square"></i> Edit Pesanan</a></div>
+                                        
+                                    @elseif ($pesanan->status == 'Batal')
                                         
                                     @else
                                         

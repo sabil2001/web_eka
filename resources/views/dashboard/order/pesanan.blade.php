@@ -14,18 +14,19 @@
   </div>
 
 
+
   <section class="section">
     <div class="row justify-content-center">
         <div class="col-lg-8">
           <div class="card">
              <div class="card-body">
-                @if (session()->has('success'))   
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                  <strong>{{ session('success') }}</strong>
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                @endif
                 <h5 class="card-title">Form Order</h5>
+                    @if (session()->has('success'))   
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>{{ session('success') }}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
                     <form method="post" action="/dashboard/order/pesanan">
                         @csrf
                             <div class="row">
@@ -45,7 +46,6 @@
                                     <input type="text" id="nama_customer" class="form-control" readonly value="{{ $keranjang->customer->nama }}">
                                 </div>
                             </div> 
-                            
                             
                             <div class="row mt-3">
                                 <div class="col col-md-6">
@@ -154,6 +154,7 @@
                                 <div class="col-4">
                                     <label for="total_barang">Total Order <span class="text-danger">*</span></label>
                                     <input type="number" id="total_barang" name="total_barang" class="form-control" required>
+                                    {{-- <div class="small">Minimum pesanan 12 pcs</div> --}}
                                 </div>
                                 <div class="col-12 col-md">
                                     <label for="keterangan">Keterangan</label>

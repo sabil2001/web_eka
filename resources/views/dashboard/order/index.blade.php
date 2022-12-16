@@ -17,6 +17,48 @@
 </div>
 <section class="section">
   <div class="row">
+    <div class="col-lg-12">
+       <div class="card">
+          <div class="card-body">
+             <h5 class="card-title"><i class="bi bi-search"></i> Filter Data</h5>
+             <form action="" method="get">
+             <div class="row">
+                <div class="col-3">
+                  <label for="keyword" class="form-lavel">Kata kunci</label>
+                  <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Kode pesanan">
+                </div>
+                <div class="col-3">
+                  <label for="status" class="form-lavel">Status</label>
+                  <select name="status" id="status" class="form-select" value="{{ old('status') }}">
+                    <option value="">Semua status</option>
+                    <option value="Belum diproduksi">Belum diproduksi</option>
+                    <option value="Proses produksi">Proses produksi</option>
+                    <option value="Selesai produksi">Selesai produksi</option>
+                    <option value="Selesai">Selesai</option>
+                    <option value="Batal">Batal</option>
+                  </select>
+                </div>
+                {{-- <div class="col-3">
+                  <label for="jangkauan_awal" class="form-lavel">Tanggal pesan jangkauan</label>
+                  <input type="date" name="jangkauan_awal" id="jangkauan_awal" class="form-control">
+                </div>
+                <div class="col-3">
+                  <label for="jangkauan_akhir" class="form-lavel"></label>
+                  <input type="date" name="jangkauan_akhir" id="jangkauan_akhir" class="form-control">
+                </div> --}}
+              </div>
+              <div class="row mt-2">
+                <div class="col">
+                  <button class="btn btn-primary">Cari</button>
+                  <button class="btn btn-secondary" type="reset">Atur ulang</button>
+                </div>
+              </div>
+            </form>
+          </div>
+       </div>
+    </div>
+  </div>
+  <div class="row">
      <div class="col-lg-12">
         <div class="card">
            <div class="card-body">
@@ -57,7 +99,6 @@
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
               @endif
-          <hr>
           <div class="row">
             <div class="col">
               @can('admin')  
@@ -65,6 +106,7 @@
               @endcan
             </div>
           </div>
+          
           <div class="table-responsive">
               <table class="table table-striped table-sm mt-2">
                 <thead>

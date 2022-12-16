@@ -72,6 +72,23 @@
         </div>
     </div>
 
+    <div class="modal fade" id="informasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Perhatian</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>Selesaikan produksi pesanan terlebih dahulu.</div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
   <!-- Modal --> 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -199,7 +216,16 @@
                             <div class="justify-content-center align-self-center mx-auto">
                                 <form action="/dashboard/prosesproduksi/simpan/{{ $produksi->keranjang->id }}" method="post">
                                     @csrf
+                                    @php
+                                        $pesanan_jumlah = DB::table('pesanans')->where('keranjang_id', $produksi->keranjang->id)
+                                                                                ->where('status', 'Proses')
+                                                                                ->count();
+                                    @endphp
+                                    @if ($pesanan_jumlah == 0)
                                     <button class="button-produksi" style="width: 220px"><i class="bi bi-save2"></i><span class="ms-2">SELESAI</span></button>
+                                    @else
+                                    <input type="button" class="button-produksi" style="width: 220px" data-bs-toggle="modal" data-bs-target="#informasi" value="{{ $pesanan_jumlah }} Belum selesai">
+                                    @endif
                                     <input type="hidden" value="{{ $produksi->id }}" name="produksi_id">
                                     <div class="form-check mt-1">
                                         <input class="form-check-input" type="checkbox" id="button_batal">
@@ -250,7 +276,7 @@
                                 <td>{{ $pesanan->status }}</td>
                                 <td>
                                     @if ($pesanan->total_kain_digunakan)
-                                    {{ $pesanan->total_kain_digunakan }} CM
+                                    {{ $pesanan->total_kain_digunakan }} M
                                     @else
                                         
                                     @endif

@@ -15,11 +15,17 @@
 		}
 
 		.logo{
-			width: 100px;
+			width: 180px;
 		}
-		.nama_perusahaan{
+		.invoice{
+			float: right;
 			font-weight: bold;
-			font-size: large
+			font: 16px sans-serif;
+			text-align: right;
+			margin-top: 4px;
+		}
+		.nomor_invoive {
+			color: #823ce7;
 		}
 		.alamat_perusahaan{
 			color: gray;
@@ -34,7 +40,7 @@
 		}
 		.header .judul{
 			text-align: center;
-			margin-top: 20px;
+			/* margin-top: 20px; */
 		}
 		.inv{
 			font-weight: bold;
@@ -43,51 +49,116 @@
 		.header{
 			width: 100%;
 			height: 245px;
-			background-color: aquamarine
+			/* background-color: aquamarine */
 		}
 		.group-perusahaan{
 			padding-left: 40px;
 			padding-right: 40px;
 			padding-top: 20px;
 		}
-		.info_keranjang{
-			margin: auto;
+
+		.bawah-perusahaan{
+			padding-left: 40px;
+			padding-right: 40px;
+			padding-top: 30px;
+		}
+		.text-customer {
+			font-weight: bold;
+			font-size: 15px;
+			width: 50%
+		}
+		.table-customer {
+			font-size: 14px;
 			border-collapse: collapse;
-  			width: 90%;
+  			/* width: 100%; */
+			margin-left: -3px
 		}
-		td, th{
-			padding: 8px;
+		.table-customer, tr, td {
+			/* padding-left: 2px; */
+			vertical-align: top;
+			padding: 2px;
 		}
+		.colum {
+			float: left;
+  			width: 50%;
+		}
+
+		.pesanan-table {
+			font-size: 14px;
+		}
+		
+		.pesanan-table, .header, .isi-header {
+			padding: 5px
+		}
+		
 	</style>
 </head>
 <body>
 	<div class="header">
 		<div class="group-perusahaan">
-			<div class="perusahaan">
-				<div class="nama_perusahaan">Bali Based Garment</div>
-				<div class="alamat_perusahaan">Jl. Pura Wr. No.6, Canggu, Kec. Kuta Utara <br>Kabupaten Badung, Bali <br>Telp. 08990981233</div>
-			</div>
 			<img class="logo" src="{{ public_path('img/logo.png')}}" alt="BTS">
+			<div class="invoice">
+				<div>INVOICE</div>
+				<div class="nomor_invoive">ORD/20220022/003</div>
+			</div>
 		</div>
 		<div class="both"></div>
-		<div class="judul">
-			<div class="inv">INVOICE</div>
-			<div>{{ $keranjang->kode_keranjang }}</div>
+		<div class="bawah-perusahaan">
+			<div class="colum">	
+				<div class="text-customer">CUSTOMER</div>
+				<table class="table-customer">
+					<tr>
+						<td style="width: 100px">Nama</td>
+						<td>:</td>
+						<td style="height: 20px;">Muhammad Sabil</td>
+					</tr>
+					<tr>
+						<td>NIK</td>
+						<td>:</td>
+						<td>3512130202010002</td>
+					</tr>
+					<tr>
+						<td>No. Telp</td>
+						<td>:</td>
+						<td>081529039723</td>
+					</tr>
+					<tr>
+						<td>Alamat</td>
+						<td>:</td>
+						<td>Jalan gelogor carik ganggotra denpasar bali indonesia merdeka aselolasasasa</td>
+					</tr>
+				</table>
+			</div>
+			<div class="colum" style="margin-left: 100px">	
+				<div class="text-customer">INFORMASI PESANAN</div>
+				<table class="table-customer">
+					<tr>
+						<td>Tanggal Pesan</td>
+						<td>:</td>
+						<td>20/12/2022</td>
+					</tr>
+					<tr>
+						<td>Jatuh Tempo</td>
+						<td>:</td>
+						<td>30/12/2022</td>
+					</tr>
+					<tr>
+						<td>Total Barang</td>
+						<td>:</td>
+						<td>1 Barang</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 	</div>
 	<main>
-		<table border="1" class="info_keranjang">
-			<tr>
-				<td>Produk</td>
-				<td>Jumlah</td>
-				<td>Size</td>
-				<td>LD</td>
-				<td>LB</td>
-				<td>PB</td>
-				<td>PT</td>
-				<td>LLA</td>
-				<td>LLB</td>
-				<td>Keterangan</td>
+		<table class="pesanan-table">
+			<tr class="header">
+				<th class="isi-header">FOTO</th>
+				<th class="isi-header">NAMA PRODUK</th>
+				<th class="isi-header">JENIS KAIN</th>
+				<th class="isi-header">WARNA</th>
+				<th class="isi-header">SIZE</th>
 			</tr>
 		</table>
 	</main>

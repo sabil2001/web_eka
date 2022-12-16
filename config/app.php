@@ -196,6 +196,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Alfa6661\AutoNumber\AutoNumberServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class
     ],
 
     /*

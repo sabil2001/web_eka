@@ -51,6 +51,7 @@ Route::get('/dashboard/pesanan/invoice/{pesanan:id}', [DashboardController::clas
 
 // cetak pertanggal
 Route::get('/dashboard/laporan/pesanan-pertanggal/{tglawal}/{tglakhir}', [LaporanController::class, 'cetakPesanan']);
+Route::post('/dashboard/data-terlaris', [DashboardController::class, 'dataProdukTerlaris']);
 // end cetak pertanggal
 
 // tampil halaman laporan

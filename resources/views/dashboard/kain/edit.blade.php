@@ -19,9 +19,31 @@
           <div class="card">
              <div class="card-body">
                 <h5 class="card-title">Form Edit Kain</h5>
-                    <form method="post" action="/dashboard/kain/{{ $kain->id }}">
+                    <form method="post" action="/dashboard/kain/{{ $kain->id }}" enctype="multipart/form-data">
                         @method('put')
                         @csrf
+                        <div class="row">
+                            <div class="col justify-content-center text-center">
+                                <div id="" class="form-text mb-2">Preview Gambar Kain.</div>
+                                @if ($kain->foto_kain)
+                                <img src="{{ asset('/storage/' . $kain->foto_kain) }}" class="img-preview img-fluid rounded border border-2 produk-preview-image" id="blah">
+                                @else
+                                <img class="img-preview img-fluid rounded border border-2 produk-preview-image" id="blah">
+                                @endif
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="foto_kain" class="form-label">Foto Kain</label>
+                                <input type='file' class="form-control @error ('foto_kain') is-invalid @enderror" id="imgInp" name="foto_kain" value="{{ old('foto_kain') }}">
+                                <div id="" class="form-text">Pilih file jika edit foto kain.</div>
+                                @error('foto_kain')
+                                    <div class="invalid-feedback">
+                                    {{ $message }}
+                                    </div>
+                                @enderror 
+                            </div>
+                        </div>
                         
                             <div class="row mt-3">
                                 <div class="col-6">
@@ -57,6 +79,7 @@
                                 <div class="col-3">
                                     <label for="stock" class="form-label">Stok</label>
                                     <input type="number" class="form-control @error ('stock') is-invalid @enderror" name="stock" id="stock" placeholder="Stok" required value="{{ old('stock', $kain->stock) }}">
+                                    <div class="small">satuan meter(m)</div>
                                     @error('stock')
                                         <div class="invalid-feedback">
                                         {{ $message }}

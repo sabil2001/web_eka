@@ -217,3 +217,114 @@
     transition: 0.4s;
 }
 
+.box-tugas {
+    border-right: 1px solid;
+    border-color: #cfcfcf;
+    padding: 10px;
+    width: 180px;
+}
+
+.box-tugas-akhir {
+    padding: 10px;
+    width: 180px;
+}
+
+.box-box-dashboard {
+    width: 100%;
+}
+
+.jumlah-tugas {
+    font: 20px Arial;
+}
+
+.link-tugas:hover{
+    background-color: #f3f3f3;
+}
+
+.bg-card {
+    border: 1px solid;
+    border-color: #cfcfcf;
+    padding: 10px;
+    border-radius: 3px;
+}
+.judul-deadline{
+    color: black;
+    font: 15px Arial;
+    font-weight: normal;
+}
+.date-list{
+    font: 12px Arial;
+    position: relative;
+    float: right;
+    color: black;
+}
+.link-menuju-pesanan{
+    color: #C0392B;
+    border: 1px solid;
+    border-color: #C0392B;
+    padding: 4px;
+    border-radius: 4px;
+    position: relative;
+    float: right;
+    width: 62px;
+    text-align: center;
+}
+
+.link-menuju-pesanan:hover{
+    color: #C0392B;
+    border: 1px solid;
+    border-color: #C0392B;
+    padding: 4px;
+    border-radius: 4px;
+    background-color: #f3f3f3;
+    position: relative;
+    float: right;
+    width: 62px;
+    text-align: center;
+    border-radius: 5px;
+    transition: 0.4s;
+}
+
+.layar-kiri {
+    width: 60%;
+}
+
+.layar-kanan {
+    width: 40%;
+}
+.filter-button{
+    background-color: #2980B9;
+    color: white;
+    border: none;
+    height: 36px;
+    border-radius: 5px;
+    width: 100px;
+}
+.filter-button:hover{
+    background-color: #2471A3;
+    color: white;
+    border: none;
+    height: 36px;
+    border-radius: 5px;
+    width: 100px;
+}
+
+.button-cetak {
+    background-color: #2ECC71;
+    color: white;
+    border: none;
+    height: 36px;
+    border-radius: 5px;
+    padding: 7px;
+}
+.button-cetak:hover {
+    background-color: #28B463;
+    color: white;
+    border: none;
+    height: 36px;
+    border-radius: 5px;
+    padding: 7px;
+}
+.filter, input, button {
+    padding: 4px;
+}

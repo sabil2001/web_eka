@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="col-6">
                                     <label for="kode_produk" class="form-label">Kode Produk</label>
-                                    <input readonly type="text" class="form-control @error ('kode_produk') is-invalid @enderror" name="kode_produk" id="kode_produk" value="{{ 'P-'.date('d-m-Y').'-'.$kd }}" required>
+                                    <input readonly type="text" class="form-control @error ('kode_produk') is-invalid @enderror" name="kode_produk" id="kode_produk" value="{{ 'PDK/'.date('dmY').'/'.$kd }}" required>
                                     @error('kode_produk')
                                         <div class="invalid-feedback">
                                         {{ $message }}

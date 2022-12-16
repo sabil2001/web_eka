@@ -174,7 +174,7 @@
                                 <td>{{ $pesanan->status }}</td>
                                 <td>
                                     @if ($pesanan->total_kain_digunakan)
-                                    {{ $pesanan->total_kain_digunakan }} CM
+                                    {{ $pesanan->total_kain_digunakan }} M
                                     @else
                                         
                                     @endif

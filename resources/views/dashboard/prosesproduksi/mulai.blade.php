@@ -72,6 +72,23 @@
     </div>
   </div>
 
+<div class="modal fade" id="informasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Perhatian</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div>Tambahkan kain terlebih dahulu.</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <!-- Modal --> 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -101,7 +118,7 @@
                 </div>
                 <div class="col">
                     <label for="total_kain_digunakan" class="form-label mt-3">Kain yang digunakan</label>
-                    <input type="number" class="form-control" id="total_kain_digunakan" name="total_kain_digunakan" placeholder="satuan mater (CM)">
+                    <input type="number" class="form-control" id="total_kain_digunakan" name="total_kain_digunakan" placeholder="satuan mater (M)">
                 </div>
             </div>
         </div>
@@ -167,7 +184,6 @@
                                         <li>Lihat detail ukuran yang diminta Customer</li>
                                         <li>Tambahkan kain yang akan digunakan</li>
                                         <li>Klik tombol Simpan untuk memulai produksi</li>
-                                        <li>Jika ingin membatalkan pesanan, Ceklis batal produksi</li>
                                   </ul>
                                 </li>
                                 <div class="text-danger">Note: Barang yang sudah diproses Produksi tidak dapat dibatalkan.</div>
@@ -178,8 +194,18 @@
                             <div class="justify-content-center align-self-center mx-auto">
                                 <form action="/dashboard/prosesproduksi/mulai/klik/{{ $keranjang->id }}" method="post">
                                     @csrf
-                                    <button class="button-produksi" style="width: 220px"><i class="bi bi-save2"></i><span class="ms-2">SIMPAN</span></button>
-                                    <div class="form-check mt-1">
+                                    @php
+                                        $pesanan_jumlah = DB::table('pesanans')->where('keranjang_id', $keranjang->id)
+                                                                        ->where('status', 'Belum diproduksi')
+                                                                        ->count();
+                                    @endphp
+                                    {{-- <input type="hidden" value="{{ $pesanan_jumlah }}"> --}}
+                                    @if ($pesanan_jumlah == 0)
+                                        <button class="button-produksi" style="width: 220px"><i class="bi bi-save2"></i><span class="ms-2">MULAI</span></button>
+                                    @else
+                                        <input type="button" class="button-produksi" style="width: 220px" data-bs-toggle="modal" data-bs-target="#informasi" value="{{ $pesanan_jumlah }} Kain belum ditambah">
+                                    @endif
+                                    {{-- <div class="form-check mt-1">
                                         <input class="form-check-input" type="checkbox" id="button_batal" value="Batal produksi" name="batal_produksi">
                                         <label class="form-check-label small" for="flexCheckDefault">
                                         Batal produksi
@@ -188,7 +214,7 @@
                                     <div class="" id="keterangan-form">
                                         <label for="keterangan" class="form-label">Keterangan</label>
                                         <textarea class="form-control" id="keterangan" name="keterangan" rows="2"></textarea>
-                                    </div>
+                                    </div> --}}
                                     {{-- <button class="button-produksi"><i class="bi bi-save2"></i><span class="ms-2">SIMPAN</span></button> --}}
                                 </form>
                             </div>
@@ -229,7 +255,7 @@
                                 <td>{{ $pesanan->status }}</td>
                                 <td>
                                     @if ($pesanan->total_kain_digunakan)
-                                    {{ $pesanan->total_kain_digunakan }} CM
+                                    {{ $pesanan->total_kain_digunakan }} M
                                     @else
                                         
                                     @endif

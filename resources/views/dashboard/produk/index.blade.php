@@ -33,10 +33,11 @@
                 <thead>
                   <tr>
                     <th >No</th>
+                    <th >Foto</th>
                     <th>Kode</th>
                     <th>Nama Produk</th>
-                    <th>Size</th>
-                    <th class="text-center">Total Pembelian</th>
+                    <th class="text-center">Size</th>
+                    <th class="text-end">Total Pembelian</th>
                     <th class="text-center">Status</th>
                     <th class="text-center">Aksi</th>
                   </tr>
@@ -45,11 +46,13 @@
                   @foreach ($produks as $produk)  
                   <tr>
                     <td>{{ $loop->iteration }}</td>
-                    
+                    <td>
+                      <img src="{{ asset('storage/' . $produk->foto_produk) }}" class="rounded" style="width:130px">
+                    </td>
                     <td>{{ $produk->kode_produk }}</td>
                     <td>{{ $produk->nama_produk }}</td>
-                    <td>{{ $produk->size }}</td>
-                    <td class="text-center">{{ $produk->jumlah_laku }}</td>
+                    <td class="text-center">{{ $produk->size }}</td>
+                    <td class="text-end">{{ $produk->jumlah_laku }} pcs</td>
                     <td class="text-center">
                       @if ($produk->status=="Aktif")
                             <span class="badge bg-success">{{ $produk->status }}</span>

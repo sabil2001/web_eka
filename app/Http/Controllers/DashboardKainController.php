@@ -52,10 +52,16 @@ class DashboardKainController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'foto_kain' => 'required|image|mimes:jpeg,png,jpg|max:4096',
             'nama_kain' => 'required',
             'warna' => 'required',
             'stock' => 'required'
         ]);
+        if($request->file('foto_kain')){
+            $file = $request->file('foto_kain');
+            $fileName = $file->hashName();
+            $validatedData['foto_kain'] = $file->storeAs('kain-foto', $fileName);
+        }
         $validatedData['kode_kain'] = $request->kode_kain;
         $validatedData['status'] = 'Aktif';
         Kain::create($validatedData);
@@ -97,6 +103,7 @@ class DashboardKainController extends Controller
     public function update(Request $request, Kain $kain)
     {
         $rules = [
+            'foto_kain' => 'required | mimes:jpeg,jpg,png | max:4096',
             'nama_kain' => 'required',
             'warna' => 'required',
             'stock' => 'required',
@@ -106,6 +113,9 @@ class DashboardKainController extends Controller
             $rules['kode_kain'] = 'required|unique:kains';
         }
         $validatedData = $request->validate($rules);
+        if($request->file('foto_kain')){
+            $validatedData['foto_kain'] = $request->file('foto_kain')->store('kain-foto');
+        }
         Kain::where('id', $kain->id)
                 ->update($validatedData);
         return redirect('/dashboard/kain')->with('success', 'Berhasil update Kain!');

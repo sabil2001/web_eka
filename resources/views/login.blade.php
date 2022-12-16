@@ -32,8 +32,9 @@
   <form class="" action="/login" method="post">
     {{-- csrf = untuk mengamankan form --}}
     @csrf
-    <img class="mb-2" src="/img/logo.png" alt="" width="" height="100">
-    <h1 class="h3 mb-3 fw-normal">Hi, Welcome!</h1>
+    <img class="mb-4 mt-2" src="/img/logo.png" alt="" width="" height="60">
+    
+    {{-- <h1 class="h4 mb-3 fw-normal">Hi, Welcome!</h1> --}}
 
     <div class="form-floating">
       <input type="email" class="form-control @error ('email') is-invalid @enderror" id="email" placeholder="email" name="email" autofocus required value="{{ old('email') }}">
@@ -50,7 +51,7 @@
     </div>
 
     <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
-    <p class="mt-2 mb-1 text-muted">&copy; 2021 - 2022 SIE Bali Based Garment</p>
+    <p class="mt-2 mb-1 text-muted">&copy; 2022 SIE Bali Based Garment</p>
   </form>
 </main>
 

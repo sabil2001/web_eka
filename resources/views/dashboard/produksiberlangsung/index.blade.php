@@ -59,7 +59,7 @@
                       {{-- <th scope="col">Pegawai</th> --}}
                       <th scope="col">Status</th>
                       <th scope="col" class="text-center">Invoice</th>
-                      <th scope="col" class="text-center">Aksi</th>
+                      <th scope="col" class="text-center" style="width: 150px">Aksi</th>
                       </tr>
                   </thead>
                   <tbody>

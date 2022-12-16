@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('kains', function (Blueprint $table) {
             $table->id();
+            $table->string('foto_kain')->nullable();
             $table->string('kode_kain')->unique();
             $table->string('nama_kain');
             $table->string('warna');

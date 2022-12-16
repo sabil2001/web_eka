@@ -61,7 +61,7 @@
             
             <div class="row">
                 <div class="col-4">Keterangan</div>
-                <div class="col-2" id="keterangan"></div>
+                <div class="col-8" id="keterangan"></div>
             </div>
 
         </div>
@@ -174,7 +174,7 @@
                                 <td>{{ $pesanan->status }}</td>
                                 <td>
                                     @if ($pesanan->total_kain_digunakan)
-                                    {{ $pesanan->total_kain_digunakan }} CM
+                                    {{ $pesanan->total_kain_digunakan }} M
                                     @else
                                         
                                     @endif

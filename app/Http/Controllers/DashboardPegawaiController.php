@@ -15,7 +15,7 @@ class DashboardPegawaiController extends Controller
      */
     public function index()
     {
-        if(auth()->guest() || auth()->user()->jabatan !== 'Master Admin'){
+        if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
             abort(403);
         }
         return view('dashboard.pegawai.index', [
@@ -31,7 +31,7 @@ class DashboardPegawaiController extends Controller
      */
     public function create()
     {
-        if(auth()->guest() || auth()->user()->jabatan !== 'Master Admin'){
+        if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
             abort(403);
         }
         return view ('dashboard.pegawai.create',[
@@ -47,7 +47,7 @@ class DashboardPegawaiController extends Controller
      */
     public function store(Request $pegawai)
     {
-        if(auth()->guest() || auth()->user()->jabatan !== 'Master Admin'){
+        if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
             abort(403);
         }
         $validatedData = $pegawai->validate([
@@ -79,7 +79,7 @@ class DashboardPegawaiController extends Controller
      */
     public function show(User $pegawai)
     {
-        if(auth()->guest() || auth()->user()->jabatan !== 'Master Admin'){
+        if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
             abort(403);
         }
         return view('dashboard.pegawai.detailPegawai', [
@@ -96,7 +96,7 @@ class DashboardPegawaiController extends Controller
      */
     public function edit(User $pegawai)
     {
-        if(auth()->guest() || auth()->user()->jabatan !== 'Master Admin'){
+        if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
             abort(403);
         }
         return view('dashboard.pegawai.edit', [
@@ -114,7 +114,7 @@ class DashboardPegawaiController extends Controller
      */
     public function update(Request $request, User $pegawai)
     {
-        if(auth()->guest() || auth()->user()->jabatan !== 'Master Admin'){
+        if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
             abort(403);
         }
         $rules = [
@@ -148,7 +148,7 @@ class DashboardPegawaiController extends Controller
      */
     public function destroy(User $user)
     {
-        if(auth()->guest() || auth()->user()->jabatan !== 'Master Admin'){
+        if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
             abort(403);
         }
     }

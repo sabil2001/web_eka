@@ -48,7 +48,7 @@
           background-color: black;
         } */
       </style>
-      
+      @yield('style')
    </head>
    <body>
 
@@ -67,7 +67,8 @@
       <script src="/assets/js/apexcharts.min.js"></script>
       <script src="/assets/js/bootstrap.bundle.min.js"></script>
       <script src="/assets/js/quill.min.js"></script>
-      <script src="/assets/js/simple-datatables.js"></script>
+      {{-- <script src="/assets/js/simple-datatables.js"></script> --}}
+      <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.13.1/datatables.min.js"></script>
       <script src="/assets/js/tinymce.min.js"></script>
       <script src="/assets/js/validate.js"></script>
       <script src="/assets/js/main.js"></script> 
@@ -81,7 +82,7 @@
         }
       }
       </script>    
-
+      @yield('script')
       
       
     </body>

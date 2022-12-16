@@ -20,12 +20,21 @@ class DashboardKeranjangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $keyword = $request->keyword;
+        $status = $request->status;
+        $tglawal = $request->jangkauan_awal;
+        $tglakhir = $request->jangkauan_akhir;
+        $keranjang = Keranjang::where('status', 'LIKE', '%'.$status.'%')
+                                ->where('kode_keranjang', 'LIKE', '%'.$keyword.'%')
+                                // ->whereBetween('pesanan_at', 'LIKE', '%'.$tglawal, $tglakhir.'%')
+                                ->latest()->paginate(10);
         $deadlines = Keranjang::where('status', 'Batal')->get();
         return view('dashboard.order.index', [
             'tittle' => 'Data Order',
-            'keranjangs' => Keranjang::latest()->paginate(10),
+            // 'keranjangs' => Keranjang::latest()->paginate(10),
+            'keranjangs' => $keranjang,
             'deadlines' => $deadlines
         ]);
     }
@@ -108,7 +117,6 @@ class DashboardKeranjangController extends Controller
 
     public function storepesanan(Request $request)
     {
-        
         $validatedData = $request->validate([
             'size' => '',
             'lebar_dada' => '',
@@ -124,6 +132,14 @@ class DashboardKeranjangController extends Controller
             'total_barang' => 'required',
             'keterangan' => '',
         ]);
+        // $keranjang = Keranjang::find($request->keranjang_id);
+        // $success = 'Minimun order 12 pcs / 1 lusin!';
+        // $tittle = 'Data Order';
+        // $produks = DB::table('produks')->where('status', 'Aktif')->latest()->get();
+        // $kains = DB::table('kains')->where('status', 'Aktif')->latest()->get();
+        // if ($validatedData['total_barang'] <= 11) {
+        //     return Redirect::back()->with('success', 'Tanggal jatuh tempo tidak boleh kurang dari sama dengan tanggal pesan!');
+        // }
         $validatedData['keranjang_id'] = $request->keranjang_id;
         $validatedData['produk_id'] = $request->produk_id;
         $validatedData['kain_id'] = $request->kain_id;

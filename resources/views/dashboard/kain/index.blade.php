@@ -33,10 +33,11 @@
                 <thead>
                   <tr>
                     <th>No</th>
+                    <th>Foto</th>
                     <th>Kode</th>
                     <th>Jenis Kain</th>
                     <th>Warna</th>
-                    <th class="text-center">Stok</th>
+                    <th class="text-end">Stok</th>
                     <th class="text-center">Status</th>
                     <th class="text-center">Aksi</th>
                   </tr>
@@ -45,11 +46,13 @@
                   @foreach ($kains as $kain)  
                   <tr>
                     <td>{{ $loop->iteration }}</td>
-                    
+                    <td>
+                      <img src="{{ asset('storage/' . $kain->foto_kain) }}" class="rounded" style="width:130px">
+                    </td>
                     <td>{{ $kain->kode_kain }}</td>
                     <td>{{ $kain->nama_kain }}</td>
                     <td>{{ $kain->warna }}</td>
-                    <td class="text-center">{{ $kain->stock }} CM</td>
+                    <td class="text-end">{{ $kain->stock }} M</td>
                     <td class="text-center">
                       @if ($kain->status=="Aktif")
                             <span class="badge bg-success">{{ $kain->status }}</span>

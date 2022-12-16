@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use PDF;
 use Carbon\Carbon;
+use App\Models\Produk;
 use App\Models\Pesanan;
 use App\Models\Customer;
 use App\Models\Keranjang;
@@ -12,21 +13,49 @@ use Illuminate\Http\Request;
 use App\Exports\PesananExport;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Validation\Rules\RequiredIf;
 
 
 
 class DashboardController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        $produks = DB::table('produks')->orderByDesc('jumlah_laku')->limit(3)->get();
+        // dd($produks);
+        foreach ($produks as $row) {
+            $nama_produk[] = $row->nama_produk;
+            $jumlah_laku[] = $row->jumlah_laku;
+        }
+        // $pesanan_bulan = Pesanan::select(
+        //     DB::raw('sum(total_barang_jadi) as `sums`'),
+        //     DB::raw("DATE_FORMAT(created_at,'%M %Y') as months"),
+        //     DB::raw('max(created_at) as createdAt')
+        // )
+        //    ->where("created_at", ">", Carbon::now()->subMonths(6))
+        //    ->orderBy('createdAt', 'desc')
+        //    ->groupBy('months')
+        //    ->get();
+
+        $deadlines = Keranjang::where('status', '=', 'Belum diproduksi')
+                                ->orWhere('status', '=', 'Proses produksi')
+                                ->get();
         $jumlah_customer= Customer::all()->count();
         $jumlah_pesanan= Pesanan::all()->count();
-        $pesanan       = collect(DB::SELECT("SELECT count(id) as jumlah from pesanans"))->first();
+
+        $pesanan       = collect(DB::SELECT("SELECT count(id) as jumlah from keranjangs"))->first();
         $dataPesanan   = Pesanan::paginate(10);
         $label         = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
         for($bulan=1;$bulan < 13;$bulan++){
-        $chartuser     = collect(DB::SELECT("SELECT count(id) AS jumlah from pesanans where month(created_at)='$bulan'"))->first();
+        $chartuser     = collect(DB::SELECT("SELECT count(id) AS jumlah from keranjangs where month(created_at)='$bulan'"))->first();
         $jumlah_user[] = $chartuser->jumlah;
         }
+        $tglawal = $request->tgl_awal;
+        $tglakhir = $request->tgl_akhir;
+
+        
+
+        
+
         return view ('dashboard.index',[
             'tittle' => 'Dashboard',
             'pesanan' => $pesanan,
@@ -35,7 +64,64 @@ class DashboardController extends Controller
             'chartuser' => $chartuser,
             'jumlah_user' => $jumlah_user,
             'jumlah_customer' => $jumlah_customer,
-            'jumlah_pesanan' => $jumlah_pesanan
+            'jumlah_pesanan' => $jumlah_pesanan,
+            'deadline' => $deadlines,
+            'label_produk' => $nama_produk,
+            'jumlah_laku' => $jumlah_laku,
+            // 'produkTerlaris' => $produkPalingLaku
+        ]);
+    }
+
+    public function dataStockKain()
+    {
+
+    }
+
+    public function dataProdukTerlaris()
+    {
+        $orderBy = 'produks.kode_produk';
+        
+        $columnsOrder = [
+            'produks.kode_produk',
+            'produks.nama_produk',
+            'produks.size',
+            'jumlah_laku',
+        ];
+        
+        $orderBy = $columnsOrder[request('order.0.column')];
+
+        $data = Pesanan::select(DB::raw("COUNT(pesanans.id) as jumlah_laku"), 'pesanans.produk_id', 'produks.nama_produk', 'produks.size', 'produks.kode_produk')
+            ->join('produks', 'produks.id', '=', 'pesanans.produk_id')
+            ->where('pesanans.status', 'Selesai produksi');
+
+        if(request('tahun')){
+            $data->whereYear("pesanans.updated_at", request('tahun'));
+        }
+        if(request('bulan')){
+            $data->whereMonth('pesanans.updated_at', request('bulan'));
+        }
+
+        if(request('search.value')!=null){
+            $data->where(function($q){
+                $q
+                ->whereRaw('LOWER(produks.nama_produk) like ? ',['%'.strtolower(request('search.value')).'%'])
+                ->orWhereRaw('LOWER(produks.kode_produk) like ? ',['%'.strtolower(request('search.value')).'%'])
+                ->orWhereRaw('LOWER(produks.size) like ? ',['%'.strtolower(request('search.value')).'%'])
+                ;
+            });
+        }
+
+        $data = $data->groupBy([DB::raw("CONCAT(YEAR(pesanans.updated_at),'-',MONTH(pesanans.updated_at))"), 'pesanans.produk_id', 'produks.nama_produk', 'produks.size', 'produks.kode_produk']);
+        $recordsFiltered = $data->get()->count();
+
+        if(request('length')!=-1) $data = $data->skip(request('start'))->take(request('length'));
+        $data = $data->orderBy($orderBy,request('order.0.dir'))->get();
+        $recordsTotal = $data->count();
+        return response()->json([
+            'draw'=>request('draw'),
+            'recordsTotal'=>$recordsTotal,
+            'recordsFiltered'=>$recordsFiltered,
+            'data'=>$data
         ]);
     }
 
