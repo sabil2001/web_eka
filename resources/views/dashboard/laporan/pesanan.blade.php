@@ -135,14 +135,6 @@
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
               @endif
-          <div class="row">
-            <div class="col">
-              @can('admin')  
-              <a href="/dashboard/order/create" class="btn btn-primary mb-2"><i class="bi bi-file-earmark-plus"></i><span class="ms-2">Order</span></a>
-              @endcan
-            </div>
-          </div>
-          
           <div class="table-responsive">
               <table class="table table-striped table-sm mt-2">
                 <thead>

@@ -49,41 +49,31 @@
                  </div>
                  <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
                     <h5 class="card-title">History</h5>
-                    <table class="table table-striped table-sm text-center">
+                    <table class="table table-striped table-sm">
                         <thead>
                           <tr>
                             <th scope="col">No</th>
                             <th scope="col">Tanggal Pesan</th>
-                            <th scope="col">Model</th>
-                            <th scope="col">Kain</th>
-                            <th scope="col">Total Order</th>
+                            <th scope="col">No. Pesanan</th>
+                            <th scope="col">Total Pesan</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Keterangan</th>
                           </tr>
                         </thead>
                         <tbody>
-                          @foreach ($pesanans as $pesanan)  
+                          @foreach ($pesanans as $keranjang)  
                           <tr>
                             <td>{{ $loop->iteration }}</td>
                             
-                            <td>{{ $pesanan->tgl_pesanan }}</td>
-                            <td>{{ $pesanan->model_produk }}</td>
-                            <td>{{ $pesanan->jebnis_kain }}</td>
-                            <td>{{ $pesanan->total_barang }}</td>
-                              @if ($pesanan->status == 'Belum Diproses')
-                                 <td><span class="badge bg-danger">{{ $pesanan->status }}</span></td>
-                              @elseif ($pesanan->status == 'Proses Produksi')
-                                 <td><span class="badge bg-warning">{{ $pesanan->status }}</span></td>
-                              @elseif ($pesanan->status == 'Proses Verifikasi')
-                                 <td><span class="badge bg-secondary">{{ $pesanan->status }}</span></td>
-                              @elseif ($pesanan->status == 'Revisi')
-                                 <td><span class="badge bg-danger">{{ $pesanan->status }}</span></td>
+                            <td>{{ Carbon\Carbon::parse($keranjang->pesanan_at)->format('d/m/Y') }}</td>
+                            <td><a href="/dashboard/order/show/{{ $keranjang->id }}">{{ $keranjang->kode_keranjang }}</a></td>
+                            <td>{{ $keranjang->pesanan->count() }} Pesanan</td>
+                              @if ($keranjang->status == 'Belum Diproses' || $keranjang->status == 'Batal')
+                                 <td><span class="badge bg-danger">{{ $keranjang->status }}</span></td>
+                              @elseif ($keranjang->status == 'Proses Produksi')
+                                 <td><span class="badge bg-warning">{{ $keranjang->status }}</span></td>
                               @else
-                                 <td><span class="badge bg-success">{{ $pesanan->status }}</span></td>
+                                 <td><span class="badge bg-success">{{ $keranjang->status }}</span></td>
                               @endif
-                            <td>{{ $pesanan->keterangan }}</td>
-                            
-                            
                           </tr>
                           @endforeach
                         </tbody>

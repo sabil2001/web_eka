@@ -144,9 +144,11 @@
                 <thead>
                   <tr>
                     <th scope="col">Kode</th>
-                    <th scope="col">Nama Produk</th>
+                    <th scope="col">Produk</th>
                     <th scope="col">Size</th>
-                    <th scope="col" class="text-center">Total Pembelian</th>
+                    <th scope="col">Kain</th>
+                    <th scope="col">Warna</th>
+                    <th scope="col" class="text-center">Total</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -165,6 +167,33 @@
             <div class="col">
               <div class="fw-bold h6">
                 <i class="bi bi-bar-chart"></i> Statistik Pesanan
+                <div class="fw-light small">Menampilkan data pesanan perbulan</div>
+              </div>
+            </div>
+            <div class="col">
+              <a href="/dashboard/order" class="float-end">Lainnya <i class="bi bi-chevron-right"></i></a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <canvas id="mataChart" class="chartjs" width="undefined" height="undefined"></canvas>
+            </div>
+          </div>
+          {{-- <div class="row">
+            <div class="col">
+              <div><span class="fw-bold">8 </span>bulan ini vs bulan kemarin <span class="fw-bold">8 </span> pesanan</div>
+            </div>
+          </div> --}}
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin-top: -15px">
+      <div class="col-12 col-xl-12">
+        <div class="card p-3">
+          <div class="row">
+            <div class="col">
+              <div class="fw-bold h6">
+                <i class="bi bi-bar-chart"></i> Stacked Bar Chart
                 <div class="fw-light small">Menampilkan data pesanan perbulan</div>
               </div>
             </div>
@@ -434,11 +463,12 @@
   const table = $('#produk-terlaris').DataTable({
 		"pageLength": 100,
     "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
-    "bLengthChange": true,
-    "bFilter": true,
-    "bInfo": true,
-    "processing":true,
+    "bLengthChange": false,
+    "bFilter": false,
+    "bInfo": false,
+    "processing":false,
     "bServerSide": true,
+    
 		ajax:{
       url: "{{url('dashboard/data-terlaris')}}",
       type: "POST",
@@ -467,8 +497,19 @@
       },
       {
         "render": function(data, type, row, meta){
-          return row.jumlah_laku
+          return row.nama_kain
         }
+      },
+      {
+        "render": function(data, type, row, meta){
+          return row.warna
+        }
+      },
+      {
+        "render": function(data, type, row, meta){
+          return row.jumlah_laku
+        },
+        className: "text-center"
       }
     ]
 	});

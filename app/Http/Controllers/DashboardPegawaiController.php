@@ -15,9 +15,9 @@ class DashboardPegawaiController extends Controller
      */
     public function index()
     {
-        if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
-            abort(403);
-        }
+        // if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
+        //     abort(403);
+        // }
         return view('dashboard.pegawai.index', [
             'tittle' => 'Data Pegawai',
             'pegawais' => User::latest()->paginate(10)
@@ -31,9 +31,9 @@ class DashboardPegawaiController extends Controller
      */
     public function create()
     {
-        if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
-            abort(403);
-        }
+        // if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
+        //     abort(403);
+        // }
         return view ('dashboard.pegawai.create',[
             'tittle' => 'Tambah Pegawai'
         ]);
@@ -47,9 +47,9 @@ class DashboardPegawaiController extends Controller
      */
     public function store(Request $pegawai)
     {
-        if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
-            abort(403);
-        }
+        // if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
+        //     abort(403);
+        // }
         $validatedData = $pegawai->validate([
             'name' => 'required|max:100|min:3',
             'email' => 'required|unique:users',
@@ -79,9 +79,9 @@ class DashboardPegawaiController extends Controller
      */
     public function show(User $pegawai)
     {
-        if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
-            abort(403);
-        }
+        // if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
+        //     abort(403);
+        // }
         return view('dashboard.pegawai.detailPegawai', [
             'pegawai' => $pegawai,
             'tittle' => 'Detail Pegawai'
@@ -96,9 +96,9 @@ class DashboardPegawaiController extends Controller
      */
     public function edit(User $pegawai)
     {
-        if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
-            abort(403);
-        }
+        // if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
+        //     abort(403);
+        // }
         return view('dashboard.pegawai.edit', [
             'tittle' => 'Edit Pegawai',
             'pegawai' => $pegawai
@@ -114,9 +114,9 @@ class DashboardPegawaiController extends Controller
      */
     public function update(Request $request, User $pegawai)
     {
-        if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
-            abort(403);
-        }
+        // if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
+        //     abort(403);
+        // }
         $rules = [
             'name' => 'required|max:100|min:3',
             'alamat' => 'required',
@@ -148,8 +148,8 @@ class DashboardPegawaiController extends Controller
      */
     public function destroy(User $user)
     {
-        if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
-            abort(403);
-        }
+        // if(auth()->guest() || auth()->user()->jabatan !== 'Pimpinan'){
+        //     abort(403);
+        // }
     }
 }

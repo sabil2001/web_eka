@@ -47,7 +47,7 @@
                   <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>
-                      <img src="{{ asset('storage/' . $produk->foto_produk) }}" class="rounded" style="width:130px">
+                      <img src="{{ asset('storage/' . $produk->foto_produk) }}" class="rounded" style="width:100px; height:100px; overflow:hidden">
                     </td>
                     <td>{{ $produk->kode_produk }}</td>
                     <td>{{ $produk->nama_produk }}</td>

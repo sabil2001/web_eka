@@ -126,7 +126,7 @@ Route::resource('/dashboard/produk', DashboardProdukController::class)->middlewa
 
 Route::resource('/dashboard/kain', DashboardKainController::class)->middleware('auth');
 
-Route::resource('/dashboard/pegawai', DashboardPegawaiController::class)->middleware('master');
+Route::resource('/dashboard/pegawai', DashboardPegawaiController::class)->middleware('auth');
 
 Route::resource('/dashboard/customer', DashboardCustomerController::class)->middleware('auth');
 

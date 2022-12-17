@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Keranjang;
 use App\Models\Pesanan;
 use Illuminate\Http\Request;
 
@@ -70,7 +71,7 @@ class DashboardCustomerController extends Controller
         return view('dashboard.customer.detail', [
             'tittle' => 'Detail Customer',
             'customer' => $customer,           
-            'pesanans' => $customer->pesanan           
+            'pesanans' => $customer->keranjang             
         ]);       
     }
 

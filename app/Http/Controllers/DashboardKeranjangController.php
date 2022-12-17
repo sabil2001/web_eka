@@ -22,20 +22,25 @@ class DashboardKeranjangController extends Controller
      */
     public function index(Request $request)
     {
-        $keyword = $request->keyword;
-        $status = $request->status;
-        $tglawal = $request->jangkauan_awal;
-        $tglakhir = $request->jangkauan_akhir;
-        $keranjang = Keranjang::where('status', 'LIKE', '%'.$status.'%')
-                                ->where('kode_keranjang', 'LIKE', '%'.$keyword.'%')
-                                // ->whereBetween('pesanan_at', 'LIKE', '%'.$tglawal, $tglakhir.'%')
-                                ->latest()->paginate(10);
+        if ($request->status || $request->keyword) {
+            $keyword = $request->keyword;
+            $status = $request->status;
+            // $tglawal = $request->jangkauan_awal;
+            // $tglakhir = $request->jangkauan_akhir;
+            $keranjang = Keranjang::where('status', 'LIKE', '%'.$status.'%')
+                                    ->where('kode_keranjang', 'LIKE', '%'.$keyword.'%')
+                                    // ->whereBetween('pesanan_at',[$tglawal, $tglakhir])
+                                    ->latest()->paginate(10);
+        }else{
+            $keranjang = Keranjang::latest()->paginate(10);
+        }
+        
         $deadlines = Keranjang::where('status', 'Batal')->get();
         return view('dashboard.order.index', [
             'tittle' => 'Data Order',
             // 'keranjangs' => Keranjang::latest()->paginate(10),
             'keranjangs' => $keranjang,
-            'deadlines' => $deadlines
+            'deadlines' => $deadlines,
         ]);
     }
 

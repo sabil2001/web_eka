@@ -15,41 +15,48 @@
 
 <section class="section">
   <div class="row justify-content-center">
-    <div class="col-xl-8">
+    <div class="col-xl-10">
         <div class="card">
             <div class="card-body">
                <h5 class="card-title">Pegawai</h5>
+                @if ($pegawai->foto)
+                    <img src="{{ asset('storage/' . $pegawai->foto) }}" class="rounded float-end" width="200px">
+                @elseif($pegawai->jenis_kelamin == 'Perempuan')
+                    <img src="/img/pp-girl.jpg" alt="Profile" class="rounded float-end" width="200px">
+                @else
+                    <img src="/img/pp-boy.jpg" alt="Profile" class="rounded float-end" width="200px">
+                @endif
                 <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Nama lengkap</div>
-                    <div class="col-lg-9 col-md-8">: {{ $pegawai->name }}</div>
+                    <div class="col-lg-4 col-md-4 label">Nama</div>
+                    <div class="col-lg col-md-8">: {{ $pegawai->name }}</div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8">: {{ $pegawai->email }}</div>
+                    <div class="col-lg-4 col-md-4 label">Email</div>
+                    <div class="col-lg col-md-8">: {{ $pegawai->email }}</div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Alamat</div>
-                    <div class="col-lg-9 col-md-8">: {{ $pegawai->alamat }}</div>
+                    <div class="col-lg-4 col-md-4 label">Alamat</div>
+                    <div class="col-lg col-md-8">: {{ $pegawai->alamat }}</div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-4 label">No. Telfon</div>
-                    <div class="col-lg-9 col-md-8">: {{ $pegawai->no_telp }}</div>
+                    <div class="col-lg-4 col-md-4 label">No. Telfon</div>
+                    <div class="col-lg col-md-8">: {{ $pegawai->no_telp }}</div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Jenis Kelamin</div>
-                    <div class="col-lg-9 col-md-8">: {{ $pegawai->jenis_kelamin }}</div>
+                    <div class="col-lg-4 col-md-4 label">Jenis Kelamin</div>
+                    <div class="col-lg col-md-8">: {{ $pegawai->jenis_kelamin }}</div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Jabatan</div>
-                    <div class="col-lg-9 col-md-8">: {{ $pegawai->jabatan }}</div>
+                    <div class="col-lg-4 col-md-4 label">Jabatan</div>
+                    <div class="col-lg col-md-8">: {{ $pegawai->jabatan }}</div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Status Akun</div>
-                    <div class="col-lg-9 col-md-8">: {{ $pegawai->status }}</div>
+                    <div class="col-lg-4 col-md-4 label">Status Akun</div>
+                    <div class="col-lg col-md-8">: {{ $pegawai->status }}</div>
                 </div>
+                <button onclick="history.back()" class="btn btn-secondary mt-2">Back</button>
             </div>
          </div>
-         <button onclick="history.back()" class="btn btn-secondary mt-2">Back</button>
      </div>
     </div>
   </section>

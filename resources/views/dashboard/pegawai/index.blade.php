@@ -32,17 +32,27 @@
                 <thead>
                   <tr>
                     <th scope="col">No</th>
+                    <th scope="col">Foto</th>
                     <th scope="col">Nama</th>
                     <th scope="col">Email</th>
                     <th scope="col">Jabatan</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Action</th>
+                    <th scope="col" class="text-center">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach ($pegawais as $pegawai)  
                   <tr>
                     <td>{{ $loop->iteration }}</td>
+                    <td>
+                      @if ($pegawai->foto)
+                        <img src="{{ asset('storage/' . $pegawai->foto) }}" class="rounded" style="width:100px; height:100px; overflow:hidden">
+                      @elseif (!$pegawai->foto && $pegawai->jenis_kelamin == 'Perempuan')
+                        <img src="/img/pp-girl.jpg" class="rounded" style="width:100px; height:100px; overflow:hidden">
+                      @else
+                        <img src="/img/pp-boy.jpg" class="rounded" style="width:100px; height:100px; overflow:hidden">
+                      @endif
+                    </td>
                     <td>{{ $pegawai->name }}</td>
                     <td>{{ $pegawai->email }}</td>
                     <td>{{ $pegawai->jabatan }}</td>
@@ -55,9 +65,9 @@
                       @endif 
                     </td>
 
-                    <td>
-                      <a href="/dashboard/pegawai/{{ $pegawai->id }}" class="badge bg-info"><i class="bi bi-eye"></i></span></a>
-                      <a href="/dashboard/pegawai/{{ $pegawai->id }}/edit" class="badge bg-warning"><i class="bi bi-pencil"></i></a>
+                    <td class="text-center">
+                      <a href="/dashboard/pegawai/{{ $pegawai->id }}" class="tombol-invoice"><i class="bi bi-list-ol"></i> Detail</a>
+                      <a href="/dashboard/pegawai/{{ $pegawai->id }}/edit" class="tombol-aksi"><i class="bi bi-pencil"></i> Edit</a>
                     </td>
                   </tr>
                   @endforeach

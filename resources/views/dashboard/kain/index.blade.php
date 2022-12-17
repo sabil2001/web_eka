@@ -47,7 +47,7 @@
                   <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>
-                      <img src="{{ asset('storage/' . $kain->foto_kain) }}" class="rounded" style="width:130px">
+                      <img src="{{ asset('storage/' . $kain->foto_kain) }}" class="rounded" style="width:100px; height:100px; overflow:hidden">
                     </td>
                     <td>{{ $kain->kode_kain }}</td>
                     <td>{{ $kain->nama_kain }}</td>

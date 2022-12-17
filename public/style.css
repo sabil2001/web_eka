@@ -308,7 +308,22 @@
     border-radius: 5px;
     width: 100px;
 }
-
+.reset-button{
+    background-color: rgb(114, 114, 114);
+    color: white;
+    border: none;
+    height: 36px;
+    border-radius: 5px;
+    width: 100px;
+}
+.reset-button:hover{
+    background-color: rgb(85, 85, 85);
+    color: white;
+    border: none;
+    height: 36px;
+    border-radius: 5px;
+    width: 100px;
+}
 .button-cetak {
     background-color: #2ECC71;
     color: white;

@@ -90,9 +90,10 @@ class DashboardController extends Controller
         
         $orderBy = $columnsOrder[request('order.0.column')];
 
-        $data = Pesanan::select(DB::raw("COUNT(pesanans.id) as jumlah_laku"), 'pesanans.produk_id', 'produks.nama_produk', 'produks.size', 'produks.kode_produk')
+        $data = Pesanan::select(DB::raw("COUNT(pesanans.id) as jumlah_laku"), 'pesanans.produk_id', 'produks.nama_produk', 'produks.size', 'produks.kode_produk', 'kains.nama_kain', 'kains.warna')
             ->join('produks', 'produks.id', '=', 'pesanans.produk_id')
-            ->where('pesanans.status', 'Selesai produksi');
+            ->join('kains', 'kains.id', '=', 'pesanans.kain_id')
+            ->where('pesanans.status', 'Selesai produksi')->take(5);
 
         if(request('tahun')){
             $data->whereYear("pesanans.updated_at", request('tahun'));
@@ -111,7 +112,7 @@ class DashboardController extends Controller
             });
         }
 
-        $data = $data->groupBy([DB::raw("CONCAT(YEAR(pesanans.updated_at),'-',MONTH(pesanans.updated_at))"), 'pesanans.produk_id', 'produks.nama_produk', 'produks.size', 'produks.kode_produk']);
+        $data = $data->groupBy([DB::raw("CONCAT(YEAR(pesanans.updated_at),'-',MONTH(pesanans.updated_at))"), 'pesanans.produk_id', 'produks.nama_produk', 'produks.size', 'produks.kode_produk', 'kains.nama_kain', 'kains.warna']);
         $recordsFiltered = $data->get()->count();
 
         if(request('length')!=-1) $data = $data->skip(request('start'))->take(request('length'));

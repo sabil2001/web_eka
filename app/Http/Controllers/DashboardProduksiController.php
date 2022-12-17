@@ -95,14 +95,15 @@ class DashboardProduksiController extends Controller
 
         if ($stock_tersedia < $request->total_kain_digunakan) {
             return response()->json(['errors' => 'Stok kain tidak mencukupi']);
+        
         }else{
             $data = [
-                'status' => $request->status,
+                'status' => 'Proses',
                 'total_kain_digunakan' => $request->total_kain_digunakan
             ];
             Pesanan::where('id', $pesanan->id)
                 ->update($data);
-
+            
             $sisa_stock = $stock_tersedia - $request->total_kain_digunakan;
             DB::table('kains')
             ->where('id', $request->kain_id)

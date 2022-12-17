@@ -56,7 +56,7 @@
      <li class="nav-item"> <a class="nav-link {{ Request::is('dashboard/customer*') ? 'active' : 'collapsed' }}" href="/dashboard/customer"> <i class="bi bi-person-rolodex"></i> <span>Customer</span> </a></li>
      <li class="nav-item"> <a class="nav-link {{ Request::is('dashboard/produk*') ? 'active' : 'collapsed' }}" href="/dashboard/produk"> <i class="bi bi-card-list"></i> <span>Produk</span> </a></li>
      <li class="nav-item"> <a class="nav-link {{ Request::is('dashboard/kain*') ? 'active' : 'collapsed' }}" href="/dashboard/kain"> <i class="bi bi-bag-plus"></i> <span>Kain</span> </a></li>
-     @if(Gate::check('pimpinan') || Gate::check('master'))
+     {{-- @if(Gate::check('pimpinan') || Gate::check('master')) --}}
       <li class="nav-heading">report</li>
       <li class="nav-item">
       <a class="nav-link nav-link {{ Request::is('dashboard/laporan*') ? 'active' : 'collapsed' }}" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#"> <i class="bi bi-menu-button-wide"></i><span>Laporan</span><i class="bi bi-chevron-down ms-auto"></i> </a>
@@ -64,7 +64,7 @@
             <li> <a href="/dashboard/laporan/pesanan"> <i class="bi bi-circle"></i><span>Pesanan</span> </a></li>
          </ul>
       </li>
-      @endif
+      {{-- @endif --}}
    
     </ul>
 </aside>

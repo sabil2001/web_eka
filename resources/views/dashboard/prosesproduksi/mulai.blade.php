@@ -106,11 +106,11 @@
             <div class="alert alert-danger d-none"></div>
 
             <input type="hidden" id="kain_id" name="kain_id">
-            <label for="status" class="form-label">Status</label>
-            <select class="form-select" id="status" name="status" aria-label="Default select example">
+            {{-- <label for="status" class="form-label">Status</label> --}}
+            {{-- <select class="form-select" id="status" name="status" aria-label="Default select example">
                 <option value="Proses">Proses</option>
                 <option value="Dibatalkan">Dibatalkan</option>
-            </select>
+            </select> --}}
             <div class="row">
                 <div class="col">
                     <label for="stock" class="form-label mt-3">Stock Kain</label>
@@ -118,7 +118,7 @@
                 </div>
                 <div class="col">
                     <label for="total_kain_digunakan" class="form-label mt-3">Kain yang digunakan</label>
-                    <input type="number" class="form-control" id="total_kain_digunakan" name="total_kain_digunakan" placeholder="satuan mater (M)">
+                    <input type="number" class="form-control" id="total_kain_digunakan" required name="total_kain_digunakan" placeholder="satuan mater (M)">
                 </div>
             </div>
         </div>
@@ -262,7 +262,7 @@
                                 </td>
                                 <td>
                                     <div><a href="#" data-id="{{ $pesanan->id }}" title="Rincian ukuran" class="tombol-lihat tombol-halaman-detail"><i class="bi bi-eye"></i> Lihat Rincian Ukuran</a></div>
-                                    @if ($pesanan->total_kain_digunakan)
+                                    @if ($pesanan->status == 'Proses')
                                         
                                     @else
                                         <div class="mt-2"><a href="#" data-id="{{ $pesanan->id }}" title="Tambahkan kain yang digunakan" class="tombol-edit tombol-halaman-produksi"><i class="bi bi-play-circle"></i> Tambah Kain Produksi</a></div>
@@ -390,6 +390,7 @@
             $("#keterangan-form").hide(200);
         }
     });
+    
   </script>
 
 @endsection
