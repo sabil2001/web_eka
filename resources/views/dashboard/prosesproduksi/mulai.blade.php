@@ -118,7 +118,7 @@
                 </div>
                 <div class="col">
                     <label for="total_kain_digunakan" class="form-label mt-3">Kain yang digunakan</label>
-                    <input type="number" class="form-control" id="total_kain_digunakan" required name="total_kain_digunakan" placeholder="satuan mater (M)">
+                    <input type="number" min="1" max="" class="form-control" id="total_kain_digunakan" required name="total_kain_digunakan" placeholder="satuan mater (M)">
                 </div>
             </div>
         </div>
@@ -390,7 +390,21 @@
             $("#keterangan-form").hide(200);
         }
     });
-    
+
+    $(function () {
+            $("input").keydown(function () {
+                // Save old value.
+                if (!$(this).val() || (parseInt($(this).val()) <= 11 && parseInt($(this).val()) >= 0))
+                $(this).data("old", $(this).val());
+            });
+            $("input").keyup(function () {
+                // Check correct, else revert back to old value.
+                if (!$(this).val() || (parseInt($(this).val()) <= 11 && parseInt($(this).val()) >= 0))
+                ;
+                else
+                $(this).val($(this).data("old"));
+            });
+        });
   </script>
 
 @endsection

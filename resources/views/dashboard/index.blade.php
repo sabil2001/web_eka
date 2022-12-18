@@ -187,7 +187,7 @@
         </div>
       </div>
     </div>
-    <div class="row" style="margin-top: -15px">
+    {{-- <div class="row" style="margin-top: -15px">
       <div class="col-12 col-xl-12">
         <div class="card p-3">
           <div class="row">
@@ -211,10 +211,10 @@
               <div><span class="fw-bold">8 </span>bulan ini vs bulan kemarin <span class="fw-bold">8 </span> pesanan</div>
             </div>
           </div> --}}
-        </div>
+        {{-- </div>
       </div>
-    </div>
-    <div class="row" style="margin-top: -15px">
+    </div> --}} 
+    {{-- <div class="row" style="margin-top: -15px">
       <div class="col-12 col-xl-12">
         <div class="card">
            <div class="card-body">
@@ -224,10 +224,10 @@
                  new Chart(document.querySelector('#lineChart'), {
                    type: 'line',
                    data: {
-                     labels: <?php echo json_encode($label); ?>,
+                     labels: ,
                      datasets: [{
                        label: 'Statistik Pesanan',
-                       data: <?php echo json_encode($jumlah_user); ?>,
+                       data: >,
                        fill: false,
                        borderColor: 'rgb(75, 192, 192)',
                        tension: 0.1
@@ -246,52 +246,9 @@
            </div>
         </div>
      </div>
-    </div>
-    <div class="row" style="margin-top: -15px">
-      {{-- @php
-          $produk = mysqli_query($koneksi,"select * from tb_barang");
-          while($row = mysqli_fetch_array($produk)){
-            $nama_produk[] = $row['barang'];
-            
-            $query = mysqli_query($koneksi,"select sum(jumlah) as jumlah from tb_penjualan where id_barang='".$row['id_barang']."'");
-            $row = $query->fetch_array();
-            $jumlah_produk[] = $row['jumlah'];
-          }
-      @endphp  --}}
-      <div class="col-12 col-xl-12">
-        <div class="card">
-           <div class="card-body">
-              <h5 class="card-title">Pie Chart</h5>
-              {{-- <form action="" method="get">
-                <input type="date" class="form-control" name="tgl_awal">
-                <input type="date" class="form-control" name="tgl_akhir">
-                <button>cari</button>
-              </form> --}}
-              <canvas id="pieChart" style="max-height: 400px;"></canvas>
-              <script>document.addEventListener("DOMContentLoaded", () => {
-                 new Chart(document.querySelector('#pieChart'), {
-                   type: 'pie',
-                   data: {
-                     labels: <?php echo json_encode($label_produk); ?> ,
-                     datasets: [{
-                       label: 'My First Dataset',
-                       data: <?php echo json_encode($jumlah_laku); ?>,
-                       backgroundColor: [
-                         'rgb(255, 99, 132)',
-                         'rgb(54, 162, 235)',
-                         'rgb(255, 205, 86)'
-                       ],
-                       hoverOffset: 4
-                     }]
-                   }
-                 });
-                 });
-              </script> 
-           </div>
-        </div>
-     </div>
-    </div>
+    </div> --}}
   </div>
+
     <div class="layar-kanan ms-3">
       <div class="row">
         <div class="col-12 col-xl-12">

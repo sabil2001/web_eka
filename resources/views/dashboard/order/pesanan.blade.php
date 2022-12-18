@@ -153,7 +153,7 @@
                             <div class="row mt-3">
                                 <div class="col-4">
                                     <label for="total_barang">Total Order <span class="text-danger">*</span></label>
-                                    <input type="number" id="total_barang" name="total_barang" class="form-control" required>
+                                    <input type="number" min="12" max="" id="total_barang" name="total_barang" class="form-control" required>
                                     {{-- <div class="small">Minimum pesanan 12 pcs</div> --}}
                                 </div>
                                 <div class="col-12 col-md">
@@ -288,7 +288,20 @@
 
         });
 
-        
+        $(function () {
+            $("input").keydown(function () {
+                // Save old value.
+                if (!$(this).val() || (parseInt($(this).val()) <= 11 && parseInt($(this).val()) >= 0))
+                $(this).data("old", $(this).val());
+            });
+            $("input").keyup(function () {
+                // Check correct, else revert back to old value.
+                if (!$(this).val() || (parseInt($(this).val()) <= 11 && parseInt($(this).val()) >= 0))
+                ;
+                else
+                $(this).val($(this).data("old"));
+            });
+        });
     </script>
 
 @endsection

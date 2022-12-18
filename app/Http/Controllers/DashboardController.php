@@ -20,13 +20,22 @@ use Illuminate\Validation\Rules\RequiredIf;
 class DashboardController extends Controller
 {
     public function index(Request $request){
-        $produks = DB::table('produks')->orderByDesc('jumlah_laku')->limit(3)->get();
+        // $bulan = Carbon::now()->format('m');
+        // $produks = DB::table('pesanans')
+        //                 ->select(DB::raw('count(pesanans.id) as produks_total, produk_id'), 'produks.nama_produk')
+        //                 ->join('produks', 'pesanans.produk_id', '=', 'produks.id')
+        //                 ->where('pesanans.status', 'Selesai produksi')
+        //                 ->whereMonth('pesanans.created_at', '=', $bulan)
+        //                 ->groupBy('produk_id', 'produks.nama_produk')
+        //                 ->limit(3)->get();
         // dd($produks);
-        foreach ($produks as $row) {
-            $nama_produk[] = $row->nama_produk;
-            $jumlah_laku[] = $row->jumlah_laku;
-        }
-        // $pesanan_bulan = Pesanan::select(
+        
+        // dd($bulan);
+        // foreach ($produks as $row) {
+        //     $nama_produk[] = $row->nama_produk;
+        //     $jumlah_laku[] = $row->jumlah_laku;
+        // }
+        // // $pesanan_bulan = Pesanan::select(
         //     DB::raw('sum(total_barang_jadi) as `sums`'),
         //     DB::raw("DATE_FORMAT(created_at,'%M %Y') as months"),
         //     DB::raw('max(created_at) as createdAt')
@@ -51,11 +60,6 @@ class DashboardController extends Controller
         }
         $tglawal = $request->tgl_awal;
         $tglakhir = $request->tgl_akhir;
-
-        
-
-        
-
         return view ('dashboard.index',[
             'tittle' => 'Dashboard',
             'pesanan' => $pesanan,
@@ -66,8 +70,8 @@ class DashboardController extends Controller
             'jumlah_customer' => $jumlah_customer,
             'jumlah_pesanan' => $jumlah_pesanan,
             'deadline' => $deadlines,
-            'label_produk' => $nama_produk,
-            'jumlah_laku' => $jumlah_laku,
+            // 'label_produk' => $nama_produk,
+            // 'jumlah_laku' => $jumlah_laku,
             // 'produkTerlaris' => $produkPalingLaku
         ]);
     }
@@ -93,7 +97,7 @@ class DashboardController extends Controller
         $data = Pesanan::select(DB::raw("COUNT(pesanans.id) as jumlah_laku"), 'pesanans.produk_id', 'produks.nama_produk', 'produks.size', 'produks.kode_produk', 'kains.nama_kain', 'kains.warna')
             ->join('produks', 'produks.id', '=', 'pesanans.produk_id')
             ->join('kains', 'kains.id', '=', 'pesanans.kain_id')
-            ->where('pesanans.status', 'Selesai produksi')->take(5);
+            ->where('pesanans.status', 'Selesai produksi')->limit(5);
 
         if(request('tahun')){
             $data->whereYear("pesanans.updated_at", request('tahun'));

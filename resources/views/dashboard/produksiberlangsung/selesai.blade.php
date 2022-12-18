@@ -111,19 +111,23 @@
                     <label for="date_now" class="form-label mt-3">Tanggal hari ini</label>
                     <input type="text" class="form-control" id="date_now" readonly>
                 </div>
-                <div class="col">
+                {{-- <div class="col">
                     <label for="status" class="form-label mt-3">Status</label>
                     <select name="status" id="status" class="form-select" required>
                         <option value="">-PILIH-</option>
-                        <option value="Selesai produksi">Selesai produksi</option>
+                        <option value="Selesai produksi" selected>Selesai produksi</option>
                         <option value="Batal produksi">Batal produksi</option>
                     </select>
+                </div> --}}
+                <div class="col">
+                    <label for="total_barang_jadi" class="form-label mt-3">Total barang jadi</label>
+                    <input type="number" min="0" max="" class="form-control" id="total_barang_jadi" name="total_barang_jadi" value="" required>
                 </div>
             </div>
             <div class="row total_barang_jadi d-none">
                 <div class="col">
                     <label for="total_barang_jadi" class="form-label mt-3">Total barang jadi</label>
-                    <input type="number" class="form-control" id="total_barang_jadi" name="total_barang_jadi" value="" required>
+                    <input type="number" min="0" max="" class="form-control" id="total_barang_jadi" name="total_barang_jadi" value="" required>
                 </div>
             </div>
             <div class="row keterangan_produksi d-none">
@@ -435,6 +439,21 @@
         } else{
             $("#keterangan-form").hide(200);
         }
+    });
+
+    $(function () {
+        $("input").keydown(function () {
+            // Save old value.
+            if (!$(this).val() || (parseInt($(this).val()) <= 11 && parseInt($(this).val()) >= 0))
+            $(this).data("old", $(this).val());
+        });
+        $("input").keyup(function () {
+            // Check correct, else revert back to old value.
+            if (!$(this).val() || (parseInt($(this).val()) <= 11 && parseInt($(this).val()) >= 0))
+            ;
+            else
+            $(this).val($(this).data("old"));
+        });
     });
   </script>
 

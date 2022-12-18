@@ -27,7 +27,7 @@
               @endif
 
           <div class="table-responsive">
-            <a href="/dashboard/pegawai/create" class="btn btn-primary mb-3" >Tambah Pegawai</a>
+            <a href="/dashboard/pegawai/create" class="btn btn-primary mb-3" ><i class="bi bi-file-earmark-plus"></i><span class="ms-2">Pegawai</a>
               <table class="table table-striped table-sm">
                 <thead>
                   <tr>
